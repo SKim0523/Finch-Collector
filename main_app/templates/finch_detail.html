@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div>
+    <img class="" src="{{finch.img}}" alt="{{finch.name}}"/>
+    <h1>{{finch.name}}</h1>
+    <p>{{finch.description}}</p>
+</div>
+<div>
+    {%for comment in finch.comments.all %}
+    <span>{{forloop.counter}}.</span>
+    <span>{{comment.content}}</span>
+</div>
+    {% empty %}
+    <span>No comments to display</span>
+    {% endfor %}
+{% endblock %}
