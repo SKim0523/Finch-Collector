@@ -2,6 +2,8 @@
 {% block content %}
 <div>
     <img class="" src="{{finch.img}}" alt="{{finch.name}}"/>
+    <a class="button is-primary" href="{% url 'finch_update' finch.pk %}">Update Finch</a>
+    <a class="button is-danger" href="{% url 'finch_delete' finch.pk %}">Delete Finch</a>
     <h1>{{finch.name}}</h1>
     <p>{{finch.description}}</p>
 </div>
@@ -9,8 +11,17 @@
     {%for comment in finch.comments.all %}
     <span>{{forloop.counter}}.</span>
     <span>{{comment.content}}</span>
+    <a href="{% url 'comment_update' comment.pk %}"><button>Update</button>
+    <a href="{% url 'comment_delete' comment.pk %}"><button>Delete</button>
+    </a>
 </div>
     {% empty %}
     <span>No comments to display</span>
     {% endfor %}
+<form action="{% url 'comment_create' finch.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="content" placeholder="comment" class="input" />
+    <input type="submit" value = "Create Comment" class="button is-outlined is-success" />
+</form> 
+
 {% endblock %}

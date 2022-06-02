@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Finch Home</h1>
+<div>
+    {% for list in lists %}
+    <h1>{{list.name}}</h1>
+        {% for finch in list.finches.all %}
+        <span>{{forloop.counter}}</span>
+        <span>{{finch.name}}</span>
+        {% endfor %}
+</div>
+    {% endfor %}
 {% endblock %}

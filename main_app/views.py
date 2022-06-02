@@ -4,7 +4,7 @@ from django.http import HttpResponse # <- a class to handle sending a type of re
 #...
 from django.views.generic.base import TemplateView
 from django.shortcuts import redirect
-from .models import Finch, Comment
+from .models import Finch, Comment, List
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
@@ -13,6 +13,10 @@ from django.urls import reverse
 # Here we will be creating a class called Home and extending it from the View class
 class Home(TemplateView):
     template_name = "home.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["lists"] = List.objects.all() # this is where we add the key into our context object for the view to use
+        return context
     
 #...
 class About(TemplateView):
@@ -31,12 +35,25 @@ class FinchList(TemplateView):
         return context
     
 class CommentCreate(View):
-     def post(self,request, pk):
+     def post(self, request, pk):
         content = request.POST.get('content')
         finch = Finch.objects.get(pk = pk) #req.params.id
         Comment.objects.create(content = content, finch = finch)
-        return redirect('home')
-    
+        return redirect('finch_detail', pk = pk)
+
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields = ['content']
+    template_name = "content_update.html"
+    success_url = '/finches/' 
+    # def get_success_url(self):
+    #     return reverse('finch_detail', kwargs={'pk': self.object.pk})  
+      
+class CommentDelete(DeleteView):
+    model = Comment
+    template_name = "content_delete.html"
+    success_url = '/finches/'  
+  
 class FinchDetails(DetailView):
     model = Finch
     template_name = "finch_detail.html"
@@ -57,7 +74,32 @@ class FinchUpdate(UpdateView):
     fields = ['name', 'img', 'description']
     template_name = "finch_update.html"
     def get_success_url(self):
-        return reverse('finch_detail', kwargs={'pk': self.object.pk})     
+        return reverse('finch_detail', kwargs={'pk': self.object.pk})  
+    
+class FinchDelete(DeleteView):
+    model = Finch
+    template_name = "finch_delete.html"
+    success_url = '/finches/'  
+
+
+class ListFinchAssoc(View):
+
+    def get(self, request, pk, finch_pk):
+        # get the query param from the url
+        assoc = request.GET.get("assoc") #.com/?assoc
+        if assoc == "remove":
+            # get the playlist by the id and
+            # remove from the join table the given song_id
+            List.objects.get(pk=pk).finch.remove(finch_pk)
+        if assoc == "add":
+            # get the playlist by the id and
+            # add to the join table the given song_id
+            List.objects.get(pk=pk).finch.add(finch_pk)
+        return redirect('home')
+
+
+
+
 
 # finches = [
 #   Finch("Euphonia", "https://i.imgur.com/RcGBIKQ.png",

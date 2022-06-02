@@ -24,3 +24,12 @@ class Comment(models.Model):
     
     def __str__(self):
         return self.content
+    
+class List(models.Model):
+
+    name = models.CharField(max_length=150)
+    # this is going to create the many to many relationship and join table
+    finches = models.ManyToManyField(Finch)
+
+    def __str__(self):
+        return self.name

@@ -1,8 +1,9 @@
 body {
-    background-color: #121212;
+    background-color: grey;
     /* background-color: blue; */
     color: #ffffff;
     min-height: 100vh;
+    font-size: 2rem;
   }
     
   h1, h2, h3 {
