@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body {
     background-color: #121212;
     /* background-color: blue; */
@@ -17,7 +19,8 @@ body {
     
   .title {
     color: #ffffff;
-    font-size: 35px;
+    font-size: 70px;
+    font-family: 'Lobster', cursive;
   }
     
   .gallery {
@@ -83,10 +86,30 @@ body {
     display: flex;
     flex-direction: column;
   }
+
+header {
+    width: 75%;
+}
+
+.welcome {
+    font-size: 80px;
+    font-family: 'Lobster', cursive;
+    color: white;
+    text-shadow: 2px 2px 0px darkgreen;
+}
+
+.welcome-message {
+    font-size: 30px;
+}
   
 .list-name {
     color: green;
-    font-size: 50px;
+    font-size: 35px;
+    font-family: 'Lobster', cursive;
+}
+
+.counter, .item {
+    font-size: 25px;
 }
 
 .navbar-item {
@@ -96,6 +119,7 @@ body {
 .finch-img {
     width: 50%;
     height: 50%;
+    margin-bottom: 10px;
 }
 
 .finch-name {
@@ -113,11 +137,20 @@ body {
 
 .finch-description {
     font-size: 25px;
+    margin-bottom: 10px;
 }
 
-.delete-finch, .update-comment, .delete-comment {
+.update-comment, .delete-comment {
     width: 70px;
     height: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.delete-finch {
+    width: 50px;
+    height: 30px;
+    margin-left: 5px;
     margin-top: 10px;
     font-weight: bold;
 }
@@ -133,4 +166,14 @@ body {
 
 .add-finch {
    margin-bottom: 30px;
+   font-weight: bolder;
+   font-size: 20px;
+}
+
+.detail-page {
+    width: 85%;
+}
+
+.create-comment {
+    margin-top: 10px;
 }

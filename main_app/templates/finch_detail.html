@@ -1,28 +1,29 @@
 {% extends 'base.html' %} 
 {% block content %}
-
-<div>
-    <img class="finch-img" src="{{finch.img}}" alt="{{finch.name}}"/><br>
-    <a class="button is-primary update-finch-btn" href="{% url 'finch_update' finch.pk %}">Update Finch</a>
-    <a class="button is-danger delete-finch-btn" href="{% url 'finch_delete' finch.pk %}">Delete Finch</a>
-    <h1 class="finch-name">{{finch.name}}</h1>
-    <p class="finch-description">{{finch.description}}</p>
+<div class="detail-page">
+    <div>
+        <img class="finch-img" src="{{finch.img}}" alt="{{finch.name}}"/><br>
+        <a class="button is-primary update-finch-btn" href="{% url 'finch_update' finch.pk %}">Update Finch</a>
+        <a class="button is-danger delete-finch-btn" href="{% url 'finch_delete' finch.pk %}">Delete Finch</a>
+        <h1 class="finch-name">{{finch.name}}</h1>
+        <p class="finch-description">{{finch.description}}</p>
+    </div>
+    <div>
+        {%for comment in finch.comments.all %}
+        <span class = "finch-content-loop">{{forloop.counter}}.</span>
+        <span class="finch-content">{{comment.content}}</span>
+        <a class="button is-primary update-comment" href="{% url 'comment_update' comment.pk %}">Update</a>
+        <a class="button is-danger delete-comment" href="{% url 'comment_delete' comment.pk %}">Delete</a>
+        </a>
+    </div>
+        {% empty %}
+        <span class="no-comments">No comments to display</span>
+        {% endfor %}
+    <form action="{% url 'comment_create' finch.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="comment" class="input" />
+        <input type="submit" value = "Create Comment" class="button is-outlined is-success create-comment" />
+    </form> 
 </div>
-<div>
-    {%for comment in finch.comments.all %}
-    <span class = "finch-content-loop">{{forloop.counter}}.</span>
-    <span class="finch-content">{{comment.content}}</span>
-    <a class="button is-primary update-comment" href="{% url 'comment_update' comment.pk %}">Update</a>
-    <a class="button is-danger delete-comment" href="{% url 'comment_delete' comment.pk %}">Delete</a>
-    </a>
-</div>
-    {% empty %}
-    <span class="no-comments">No comments to display</span>
-    {% endfor %}
-<form action="{% url 'comment_create' finch.pk %}" method="POST">
-    {% csrf_token %}
-    <input type="text" name="content" placeholder="comment" class="input" />
-    <input type="submit" value = "Create Comment" class="button is-outlined is-success" />
-</form> 
 
 {% endblock %}

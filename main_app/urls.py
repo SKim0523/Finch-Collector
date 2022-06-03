@@ -13,4 +13,5 @@ urlpatterns = [
     path('finches/<int:pk>/comments/update', views.CommentUpdate.as_view(), name='comment_update'),
     path('finches/<int:pk>/comments/delete', views.CommentDelete.as_view(), name='comment_delete'),
     path('lists/<int:pk>/finches/<int:finch_pk>/', views.ListFinchAssoc.as_view(), name="list_finch_assoc"),
+    path('accounts/signup/', views.Signup.as_view(), name="signup")
 ]

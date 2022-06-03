@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
+<header>
+    <h1 class="welcome">Welcome!</h1>
+    <p class="welcome-message">Enjoy exploring the wonderful world of finch. Below are lists you can use in looking up birds in the Finches page. Have Fun!</p>
+    <hr>
+</header>
 {% for list in lists %}
 <div>
-    <h1 class="list-name">{{list.name}}</h1><hr>
+    <h1 class="list-name">{{list.name}}</h1>
         {% for finch in list.finches.all %}
-        <span>{{forloop.counter}}.</span>
-        <span>{{finch.name}}</span>
-        <a class="button is-danger delete-finch" href="{% url 'list_finch_assoc' list.pk finch.pk %}?assoc=remove">Delete</a>
-        </span>
+        <span class="counter">{{forloop.counter}}.</span>
+        <span class="item">{{finch.name}}</span>
+        <a class="button is-outlined is-danger delete-finch" href="{% url 'list_finch_assoc' list.pk finch.pk %}?assoc=remove">x</a>
+        <!-- <input type="submit" value = "Create Comment" class="button is-outlined is-success" />     -->
+    </span>
         </a><br>
         
         {% endfor %}
