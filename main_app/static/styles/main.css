@@ -1,5 +1,5 @@
 body {
-    background-color: grey;
+    background-color: #121212;
     /* background-color: blue; */
     color: #ffffff;
     min-height: 100vh;
@@ -17,6 +17,7 @@ body {
     
   .title {
     color: #ffffff;
+    font-size: 35px;
   }
     
   .gallery {
@@ -83,16 +84,53 @@ body {
     flex-direction: column;
   }
   
-  .song {
-    width: 100%;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 0.1fr 3fr 0.5fr 0.3fr;
-    border-radius: 5px;
-  }
-  
-  .song:hover {
-    background-color: hsla(0, 0%, 100%, 0.1);
-    cursor: pointer;
-  }
-  
+.list-name {
+    color: green;
+    font-size: 50px;
+}
+
+.navbar-item {
+    font-size: 30px;
+}
+
+.finch-img {
+    width: 50%;
+    height: 50%;
+}
+
+.finch-name {
+    font-size: 40px;
+    color: green;
+}
+
+.no-comments {
+    font-size: 25px;
+}
+
+.finch-content, .finch-content-loop {
+    font-size: 25px;
+}
+
+.finch-description {
+    font-size: 25px;
+}
+
+.delete-finch, .update-comment, .delete-comment {
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.update-finch-btn, .delete-finch-btn {
+    height: 30px;
+    font-weight: bold;
+}
+
+.card-header-title {
+    font-size: 25px;
+}
+
+.add-finch {
+   margin-bottom: 30px;
+}

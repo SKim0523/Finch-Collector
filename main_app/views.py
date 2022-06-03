@@ -86,20 +86,22 @@ class ListFinchAssoc(View):
 
     def get(self, request, pk, finch_pk):
         # get the query param from the url
-        assoc = request.GET.get("assoc") #.com/?assoc
+        assoc = request.GET.get("assoc") #.com/?add
         if assoc == "remove":
             # get the playlist by the id and
             # remove from the join table the given song_id
-            List.objects.get(pk=pk).finch.remove(finch_pk)
+            List.objects.get(pk=pk).finches.remove(finch_pk)
         if assoc == "add":
             # get the playlist by the id and
             # add to the join table the given song_id
-            List.objects.get(pk=pk).finch.add(finch_pk)
+            List.objects.get(pk=pk).finches.add(finch_pk)
         return redirect('home')
 
-
-
-
+class ListCreate(CreateView):
+    model = List
+    fields = ['name']
+    template_name = 'list_create.html'
+    success_url = '/'
 
 # finches = [
 #   Finch("Euphonia", "https://i.imgur.com/RcGBIKQ.png",

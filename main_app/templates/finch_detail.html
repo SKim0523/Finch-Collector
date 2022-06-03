@@ -1,22 +1,23 @@
 {% extends 'base.html' %} 
 {% block content %}
+
 <div>
-    <img class="" src="{{finch.img}}" alt="{{finch.name}}"/>
-    <a class="button is-primary" href="{% url 'finch_update' finch.pk %}">Update Finch</a>
-    <a class="button is-danger" href="{% url 'finch_delete' finch.pk %}">Delete Finch</a>
-    <h1>{{finch.name}}</h1>
-    <p>{{finch.description}}</p>
+    <img class="finch-img" src="{{finch.img}}" alt="{{finch.name}}"/><br>
+    <a class="button is-primary update-finch-btn" href="{% url 'finch_update' finch.pk %}">Update Finch</a>
+    <a class="button is-danger delete-finch-btn" href="{% url 'finch_delete' finch.pk %}">Delete Finch</a>
+    <h1 class="finch-name">{{finch.name}}</h1>
+    <p class="finch-description">{{finch.description}}</p>
 </div>
 <div>
     {%for comment in finch.comments.all %}
-    <span>{{forloop.counter}}.</span>
-    <span>{{comment.content}}</span>
-    <a href="{% url 'comment_update' comment.pk %}"><button>Update</button>
-    <a href="{% url 'comment_delete' comment.pk %}"><button>Delete</button>
+    <span class = "finch-content-loop">{{forloop.counter}}.</span>
+    <span class="finch-content">{{comment.content}}</span>
+    <a class="button is-primary update-comment" href="{% url 'comment_update' comment.pk %}">Update</a>
+    <a class="button is-danger delete-comment" href="{% url 'comment_delete' comment.pk %}">Delete</a>
     </a>
 </div>
     {% empty %}
-    <span>No comments to display</span>
+    <span class="no-comments">No comments to display</span>
     {% endfor %}
 <form action="{% url 'comment_create' finch.pk %}" method="POST">
     {% csrf_token %}

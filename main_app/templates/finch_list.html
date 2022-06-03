@@ -5,8 +5,8 @@
 
 {% block content %}
 
-<h1 class="title pt-5">Popular Finches</h1>
-<a class="button is-dark" href="{% url 'finch_create' %}">Add Finch</a>
+<h1 class="title">Popular Finches</h1>
+<a class="button is-success add-finch" href="{% url 'finch_create' %}">Add Finch</a>
 <div class="gallery">
   {% for finch in finches %}
   <a href="{% url 'finch_detail' finch.pk %}">
@@ -27,6 +27,10 @@
       <p>No Finch Available</p>
     </div>
   </article>
+
+  
+
+
   {% endfor %}
 </div>
 {% endblock %}

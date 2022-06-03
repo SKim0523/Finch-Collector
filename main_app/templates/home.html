@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
+{% for list in lists %}
 <div>
-    {% for list in lists %}
-    <h1>{{list.name}}</h1>
+    <h1 class="list-name">{{list.name}}</h1><hr>
         {% for finch in list.finches.all %}
-        <span>{{forloop.counter}}</span>
+        <span>{{forloop.counter}}.</span>
         <span>{{finch.name}}</span>
+        <a class="button is-danger delete-finch" href="{% url 'list_finch_assoc' list.pk finch.pk %}?assoc=remove">Delete</a>
+        </span>
+        </a><br>
+        
         {% endfor %}
-</div>
+</div><br>
     {% endfor %}
 {% endblock %}
