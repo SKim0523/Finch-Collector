@@ -2,91 +2,47 @@
 
 body {
     background-color: #121212;
-    /* background-color: blue; */
     color: #ffffff;
     min-height: 100vh;
-    font-size: 2rem;
-  }
-    
-  h1, h2, h3 {
+}
+
+h1 {
     color: #ffffff;
-  }
-    
-  .container {
-    padding: 40px;
-    padding-right: 0;
-  }
-    
-  .title {
+}
+
+.title {
     color: #ffffff;
     font-size: 70px;
     font-family: 'Lobster', cursive;
-  }
-    
-  .gallery {
+}
+
+.gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     justify-content: center;
     gap: 30px;
-  }
-    
-  .gallery .card {
+}
+
+.gallery .card {
     transition: 0.1s linear;
-  }
-    
-  .gallery .card:hover {
+}
+
+.gallery .card:hover {
     transform: scale(1.1);
     z-index: 10;
-  }
+}
     
-  p {
+p {
     font-size: 12px;
-  }
+}
     
-  .detail__img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 500px;
-    background-color: #ffffff;
-    overflow: hidden;
-  }
-    
-  .detail__img::after {
-    content: "";
-    background-image: linear-gradient(transparent 60%, #1f1f1f);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-  }
-    
-  img {
+img {
     width: 100%;
     height: 500px;
     object-fit: cover;
     object-position: top;
-  }
-    
-  .detail__name {
-    position: absolute;
-    z-index: 5;
-    top: 400px;
-  }
-    
-  .detail__container {
-    margin-top: 500px;
-  }
+}
   
-  .detail__songs {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
 header {
     width: 75%;
 }
@@ -120,6 +76,12 @@ header {
     width: 50%;
     height: 50%;
     margin-bottom: 10px;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+
+.dropdown-button {
+    margin-top: 30px;
 }
 
 .finch-name {
@@ -143,7 +105,9 @@ header {
 .update-comment, .delete-comment {
     width: 70px;
     height: 30px;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
@@ -155,9 +119,15 @@ header {
     font-weight: bold;
 }
 
-.update-finch-btn, .delete-finch-btn {
+.update-finch-btn {
     height: 30px;
     font-weight: bold;
+}
+
+.delete-finch-btn {
+    height: 30px;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 .card-header-title {
@@ -166,8 +136,8 @@ header {
 
 .add-finch {
    margin-bottom: 30px;
-   font-weight: bolder;
-   font-size: 20px;
+   font-size: 16px;
+   margin-left: ;
 }
 
 .detail-page {
@@ -175,5 +145,19 @@ header {
 }
 
 .create-comment {
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.container {
+    padding: 40px;
+    padding-right: 0;
+}
+
+.signup-form,.login {
+    font-size: 10px;
+}
+
+.search-box {
+    margin-bottom: 20px;
+    display: inline-block;
 }

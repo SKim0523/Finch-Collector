@@ -17,8 +17,7 @@ class Finch(models.Model):
 
     class Meta:
         ordering = ['name']
-        
-        
+                
 class Comment(models.Model):
     content = models.TextField(max_length=500)
     finch = models.ForeignKey(Finch, on_delete=models.CASCADE, related_name="comments")
@@ -30,7 +29,6 @@ class Comment(models.Model):
 class List(models.Model):
 
     name = models.CharField(max_length=150)
-    # this is going to create the many to many relationship and join table
     finches = models.ManyToManyField(Finch)
 
     def __str__(self):
